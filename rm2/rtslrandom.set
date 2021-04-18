@@ -1,0 +1,51 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<randomMaps displayName="RTSL All" imagepath = "ui\ui map random 256x256" helpText="Randomly selects from among all original maps (5.0 version if available and excluding Nomad), all RTSL maps, Arctic Craters, Borderlands, Drenched River, Fields of Punishment, Moat, Lumber Camp, Sacred Pond, and Tropical Mirage." cannotReplace="">
+	<!-- Fast Random Maps -->
+	<map>Alfheim 5-0-0</map>
+	<map>Anatolia 5-0-0</map>
+	<map>Blue Lagoon 5-0-0</map>
+	<map>Frozen Wastes 5-0-0</map>
+	<map>Ghost Lake 5-0-0</map>
+	<map>Marsh 5-0-0</map>
+	<map>Mediterranean 5-0-0</map>
+	<map>Midgard 5-0-0</map>
+	<map>Oasis 5-0-0</map>
+	<map>Painted Desert 5-0-0</map>
+	<map>Savannah 5-0-0</map>
+	<map>Tundra 5-0-0</map>
+    <map>Watering Hole 5-0-0</map>
+	<!-- RTSL Maps -->
+	<map>RTSL Black Sea</map>
+	<map>RTSL Ghostland</map>
+	<map>RTSL Lamia</map>
+	<map>RTSL Molde</map>
+	<map>RTSL Nile Delta</map>
+	<map>RTSL River Styx</map>
+	<map>RTSL Sea of Worms</map>
+	<!-- 2017 Maps -->
+	<map>Arctic Craters</map>
+	<map>Tropical Mirage</map>
+	<map>Lumber Camp</map>
+	<map>Moat</map>
+	<map>Fields of Punishment</map>
+	<map>Borderlands</map>
+	<map>Drenched River</map>
+	<!-- 2015 Maps -->
+	<map>Sacred Pond 5-0-0</map>
+	<!-- Remaining ESO Maps -->
+	<map>Acropolis</map>
+	<map>Archipelago</map>
+	<map>Erebus</map>
+	<map>Highland</map>
+	<map>Islands</map>
+	<map>Jotunheim</map>
+	<map>King of the Hill</map>
+	<map>Land Unknown</map>
+	<map>Megalopolis</map>
+	<map>River Nile</map>
+	<map>Sudden Death</map>
+	<map>Team Migration</map>
+	<map>The Unknown</map>
+	<map>Valley of Kings</map>
+	<map>Vinlandsaga</map>
+</randomMaps>

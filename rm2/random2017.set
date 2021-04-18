@@ -1,0 +1,12 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<randomMaps displayName="2017 Party Maps" imagepath = "ui\ui map randomparty 256x256" helpText="Randomly selects from among the 2017 map set: Arctic Craters, Borderlands, Crete, Drenched River, Fields of Punishment, Moat, Sheltered Pass, Lumber Camp, and Tropical Mirage. Designed by KeeN_Flame. Created by Hagrit, Errorcodebin, and Howard Snable." cannotReplace="">
+	<map>Arctic Craters</map>
+	<map>Borderlands</map>
+	<map>Crete</map>
+	<map>Drenched River</map>
+	<map>Fields of Punishment</map>
+	<map>Lumber Camp</map>
+	<map>Moat</map>
+	<map>Sheltered Pass</map>
+	<map>Tropical Mirage</map>
+</randomMaps>

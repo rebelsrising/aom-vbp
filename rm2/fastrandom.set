@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<randomMaps displayNameID="20465" imagepath = "ui\ui map random fast 256x256" helpText="Randomly selects from among the following VBP 5.0 maps: Alfheim, Anatolia, Blue Lagoon, Frozen Wastes, Ghost Lake, Marsh, Mediterranean, Midgard, Oasis, Painted Desert, Savannah, Tundra, and Watering Hole." cannotReplace="">
+	<map>Alfheim 5-0-0</map>
+	<map>Anatolia 5-0-0</map>
+	<map>Blue Lagoon 5-0-0</map>
+	<map>Frozen Wastes 5-0-0</map>
+	<map>Ghost Lake 5-0-0</map>
+	<map>Marsh 5-0-0</map>
+	<map>Mediterranean 5-0-0</map>
+	<map>Midgard 5-0-0</map>
+	<map>Oasis 5-0-0</map>
+	<map>Painted Desert 5-0-0</map>
+	<map>Savannah 5-0-0</map>
+	<map>Tundra 5-0-0</map>
+    <map>Watering Hole 5-0-0</map>
+</randomMaps>

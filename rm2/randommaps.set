@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<randomMaps displayNameID="22684" imagepath = "ui\ui map random 256x256" helpTextID="18609" cannotReplace="">
+	<!-- Fast Random Maps -->
+	<map>Alfheim 5-0-0</map>
+	<map>Anatolia 5-0-0</map>
+	<map>Blue Lagoon 5-0-0</map>
+	<map>Frozen Wastes 5-0-0</map>
+	<map>Ghost Lake 5-0-0</map>
+	<map>Marsh 5-0-0</map>
+	<map>Mediterranean 5-0-0</map>
+	<map>Midgard 5-0-0</map>
+	<map>Oasis 5-0-0</map>
+	<map>Painted Desert 5-0-0</map>
+	<map>Savannah 5-0-0</map>
+	<map>Tundra 5-0-0</map>
+    <map>Watering Hole 5-0-0</map>
+	<!-- Remaining ESO Maps -->
+	<map>Acropolis</map>
+	<map>Archipelago</map>
+	<map>Erebus</map>
+	<map>Highland</map>
+	<map>Islands</map>
+	<map>Jotunheim</map>
+	<map>King of the Hill</map>
+	<map>Land Unknown</map>
+	<map>Megalopolis</map>
+	<map>Nomad</map>
+	<map>River Nile</map>
+	<map>Sudden Death</map>
+	<map>Team Migration</map>
+	<map>The Unknown</map>
+	<map>Valley of Kings</map>
+	<map>Vinlandsaga</map>
+</randomMaps>
