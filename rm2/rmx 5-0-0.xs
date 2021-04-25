@@ -1,7 +1,7 @@
 /*
 ** RM X Framework
 ** RebelsRising
-** Last edit: 26/03/2021
+** Last edit: 14/04/2021
 **
 ** The purpose of the RM X framework is to serve as the ultimate random map scripting library for competitive Age of Mythology maps.
 **
@@ -1653,7 +1653,7 @@ float getAngleBetweenConsecutiveAngles(float a1 = 0.0, float a2 = 0.0) {
 /*
 ** Conversions, scaling, randomization, constraints, player placement, and core areas.
 ** RebelsRising
-** Last edit: 07/03/2021
+** Last edit: 16/04/2021
 */
 
 // include "rmx_core.xs";
@@ -2036,6 +2036,18 @@ bool randChance(float trueChance = 0.5) {
 }
 
 /*
+** Calculates a random float with a higher chance for a smaller value.
+**
+** @param x: minimum value
+** @param y: maximum value
+**
+** @returns: the randomized float
+*/
+float randSmallFloat(float x = 0.0, float y = 1.0) {
+	return(sq(rmRandFloat(sqrt(x), sqrt(y))));
+}
+
+/*
 ** Calculates a random float with a higher chance for a larger value.
 **
 ** @param x: minimum value
@@ -2044,7 +2056,31 @@ bool randChance(float trueChance = 0.5) {
 ** @returns: the randomized float
 */
 float randLargeFloat(float x = 0.0, float y = 1.0) {
-	return(sqrt(rmRandFloat(x * x, y * y)));
+	return(sqrt(rmRandFloat(sq(x), sq(y))));
+}
+
+/*
+** Calculates a random int with a higher chance for a smaller value.
+**
+** @param x: minimum value
+** @param y: maximum value
+**
+** @returns: the randomized int
+*/
+int randSmallInt(int x = 0, int y = 0) {
+	return(0 + sq(rmRandFloat(sqrt(x), sqrt(y + 1))));
+}
+
+/*
+** Calculates a random int with a higher chance for a larger value.
+**
+** @param x: minimum value
+** @param y: maximum value
+**
+** @returns: the randomized int
+*/
+int randLargeInt(int x = 0, int y = 0) {
+	return(0 + sqrt(rmRandFloat(sq(x), sq(y + 1))));
 }
 
 /*
@@ -3880,9 +3916,9 @@ void placeLocationsInLine(int n = 1, float x1 = 0.0, float z1 = 0.0, float x2 = 
 /*
 ** Spawn checking for non-mirrored object IDs and proto names.
 ** RebelsRising
-** Last edit: 09/03/2021
+** Last edit: 14/04/2021
 **
-** You have two options of verifying placement.
+** You have two options to verify placement:
 **
 ** 1. By adding a check via trigger for a specific proto name.
 **    To do so, you have call addProtoPlacementCheck() (see the proto check section below).
@@ -15667,7 +15703,7 @@ void injectRainFix() {
 /*
 ** RM X Framework.
 ** RebelsRising
-** Last edit: 10/03/2021
+** Last edit: 14/04/2021
 **
 ** Lowest library file in the hierarchy - include this in your random map script.
 ** Check core.xs for more details about the RM X framework.
@@ -15755,3 +15791,4 @@ void rmxFinalize() {
 		injectObjectCheck(true, 12); // Only check for two teams of equal players.
 	}
 }
+

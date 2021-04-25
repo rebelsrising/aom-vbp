@@ -426,7 +426,7 @@ void main() {
 		rmAddAreaConstraint(playerAreaID, farAvoidPlayer);
 		rmSetAreaWarnFailure(playerAreaID, false);
 	}
-	
+
 	/*
 	 * Add the previously defined areas in a new order to the connection.
 	 * The reason we do this is because connections are always built from 1 (blue) -> 2 (red) -> 3 (green), regardless of their team/position.
@@ -863,7 +863,6 @@ void main() {
 
 	// Medium hunt 2.
 	int mediumHunt2ID = createObjectDefVerify("medium hunt 2");
-
 
 	if(randChance()) {
 		addObjectDefItemVerify(mediumHunt1ID, "Gazelle", numMediumHunt, 4.0);
