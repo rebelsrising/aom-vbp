@@ -1,7 +1,7 @@
 /*
 ** RM X Framework
 ** RebelsRising
-** Last edit: 14/04/2021
+** Last edit: 28/04/2021
 **
 ** The purpose of the RM X framework is to serve as the ultimate random map scripting library for competitive Age of Mythology maps.
 **
@@ -482,11 +482,16 @@ bool hasMergedPlayer(int p = -1) {
 ** Gets the god name of a player as a string.
 **
 ** @param player: the player to get the name of the major god for
+** @param map: whether to apply getPlayer() to the given player or not
 **
 ** @returns: the name of the god as string
 */
-string getGodName(int player = 0) {
+string getGodName(int player = 0, bool map = true) {
 	int civ = rmGetPlayerCiv(getPlayer(player));
+
+	if(map == false) {
+		civ = rmGetPlayerCiv(player);
+	}
 
 	if(civ == cCivZeus) {
 		return("Zeus");
@@ -515,7 +520,7 @@ string getGodName(int player = 0) {
 	} else if(civ == cCivFuxiID) {
 		return("Fu Xi");
 	} else if(civ == cCivNuwaID) {
-		return("Nü Wa");
+		return("Nu Wa");
 	} else if(civ == cCivShennongID) {
 		return("Shennong");
 	}
@@ -813,15 +818,17 @@ void injectInitNote(bool addObsAllowed = true, bool mergeModeAllowed = true) {
 		int playerCount = 1;
 
 		for(i = 0; < cTeams) {
-			for(j = 1; <= getNumberPlayersOnTeam(i)) {
-				// Create 1 line per player.
-				if(hasMergedPlayer(getPlayer(playerCount))) {
-					code("trChatSendSpoofed(" + getPlayer(playerCount) + ", \"" + getPlayerColor(getPlayer(playerCount)) + rmGetPlayerName(getPlayer(playerCount)) + " (" + getGodName(playerCount) + "/merged)" + cColorOff + "\");");
-				} else {
-					code("trChatSendSpoofed(" + getPlayer(playerCount) + ", \"" + getPlayerColor(getPlayer(playerCount)) + rmGetPlayerName(getPlayer(playerCount)) + " (" + getGodName(playerCount) + ")" + cColorOff + "\");");
-				}
+			for(j = 1; < cNumberPlayers) {
+				if(rmGetPlayerTeam(j) == i && isMergedPlayer(j) == false) {
+					// Create 1 line per player.
+					if(hasMergedPlayer(j)) {
+						code("trChatSendSpoofed(" + j + ", \"" + getPlayerColor(j) + rmGetPlayerName(j) + " (" + getGodName(j, false) + "/merged)" + cColorOff + "\");");
+					} else {
+						code("trChatSendSpoofed(" + j + ", \"" + getPlayerColor(j) + rmGetPlayerName(j) + " (" + getGodName(j, false) + ")" + cColorOff + "\");");
+					}
 
-				playerCount++;
+					playerCount++;
+				}
 			}
 
 			// Don't print vs after last team.
@@ -15791,4 +15798,3 @@ void rmxFinalize() {
 		injectObjectCheck(true, 12); // Only check for two teams of equal players.
 	}
 }
-
