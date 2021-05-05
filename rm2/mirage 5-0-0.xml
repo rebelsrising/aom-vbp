@@ -1,2 +1,2 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo detailsText = "The fishing opportunities and herdables are important sources of food in these sandy lands - but beware, the enemy is near..." imagepath = "ui\ui map mirage 256x256" displayName="Mirage" cannotReplace=""/>
+<mapinfo detailsText = "The fishing opportunities along the shores are important sources of food, but beware: The enemy is near..." imagepath = "ui\ui map mirage 256x256" displayName="Mirage" cannotReplace=""/>

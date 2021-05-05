@@ -1,7 +1,7 @@
 /*
 ** CALM SHORES MIRROR
 ** RebelsRising
-** Last edit: 17/04/2021
+** Last edit: 05/05/2021
 */
 
 include "rmx 5-0-0.xs";
@@ -424,7 +424,7 @@ void main() {
 	// 10. Embellishment.
 	int forceSandNearWater = createTerrainMaxDistConstraint("Water", true, 30.0);
 
-	for(i = 0; < 40 * cNonGaiaPlayers / 2) {
+	for(i = 0; < 20 * cNonGaiaPlayers) {
 		beautificationID = rmCreateArea("beautification 1 " + i);
 		rmSetAreaTerrainType(beautificationID, "GrassDirt50");
 		rmSetAreaSize(beautificationID, rmAreaTilesToFraction(10), rmAreaTilesToFraction(50));
@@ -465,7 +465,7 @@ void main() {
 	addFairLocConstraint(avoidTowerLOS);
 	addFairLocConstraint(farAvoidWater);
 
-	addFairLoc(55.0, 75.0, false, true, 50.0, 12.0, 12.0);
+	addFairLoc(55.0, 75.0, false, true, 65.0, 12.0, 12.0);
 
 	// Far settlement.
 	addFairLocConstraint(avoidTowerLOS);
@@ -476,7 +476,7 @@ void main() {
 		if(randChance(0.8)) {
 			addFairLoc(60.0, 90.0, true, true, 65.0, 60.0, 60.0);
 		} else {
-			addFairLoc(60.0, 90.0, false, false, 50.0, 12.0, 12.0);
+			addFairLoc(60.0, 90.0, false, false, 65.0, 12.0, 12.0);
 		}
 	} else {
 		addFairLoc(60.0, 90.0, true, true, 75.0, 60.0, 60.0);
@@ -559,8 +559,8 @@ void main() {
 	placeObjectMirrored(startingFoodID, false, 1, 22.0, 26.0);
 
 	// Berries.
-	placeFarObjectMirrored(farBerries1ID, false, 2, 30.0);
-	placeFarObjectMirrored(farBerries2ID, false, 1, 30.0);
+	placeFarObjectMirrored(farBerries1ID, false, 1, 50.0);
+	placeFarObjectMirrored(farBerries2ID, false, 1, 35.0);
 
 	// Straggler trees.
 	placeObjectMirrored(stragglerTree1ID, false, rmRandInt(1, 3), 13.0, 13.5, true);
@@ -615,6 +615,15 @@ void main() {
 	rmAddObjectDefConstraint(bushID, farAvoidWater);
 	rmAddObjectDefConstraint(bushID, avoidStartingSettlement);
 	rmPlaceObjectDefAtLoc(bushID, 0, 0.5, 0.5, 25 * cNonGaiaPlayers);
+	
+	// Rock.
+	int rockID = rmCreateObjectDef("rock");
+	rmAddObjectDefItem(rockID, "Rock Sandstone Sprite", 1, 0.0);
+	setObjectDefDistanceToMax(rockID);
+	rmAddObjectDefConstraint(rockID, embellishmentAvoidAll);
+	rmAddObjectDefConstraint(rockID, createTerrainMaxDistConstraint("Water", true, 17.5));
+	rmAddObjectDefConstraint(rockID, mediumAvoidWater);
+	rmPlaceObjectDefAtLoc(rockID, 0, 0.5, 0.5, 20 * cNonGaiaPlayers);
 
 	// Lone fish.
 	if(cNonGaiaPlayers > 2 && cNonGaiaPlayers < 7) {
