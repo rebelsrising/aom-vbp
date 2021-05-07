@@ -1,7 +1,7 @@
 /*
 ** MEDITERRANEAN
 ** RebelsRising
-** Last edit: 26/03/2021
+** Last edit: 17/04/2021
 */
 
 include "rmx 5-0-0.xs";
@@ -710,7 +710,7 @@ void main() {
 		rmAddObjectDefItem(axisFishID, "Fish - Mahi", 3, 5.0);
 		// rmAddObjectDefConstraint(axisFishID, avoidTowerLOS);
 		rmAddObjectDefConstraint(axisFishID, playerFishLandMin);
-		rmAddObjectDefConstraint(axisFishID, playerFishLandMax);
+		// rmAddObjectDefConstraint(axisFishID, playerFishLandMax);
 
 		for(k = 0; < 1000) {
 			float fishRadius = rmXMetersToFraction(axisFishDist + axisDistIncr * k);

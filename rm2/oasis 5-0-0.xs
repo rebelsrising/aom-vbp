@@ -1,7 +1,7 @@
 /*
 ** OASIS
 ** RebelsRising
-** Last edit: 26/03/2021
+** Last edit: 17/04/2021
 */
 
 include "rmx 5-0-0.xs";
@@ -188,6 +188,7 @@ void main() {
 	rmAddObjectDefConstraint(farPredatorsID, avoidFood);
 	rmAddObjectDefConstraint(farPredatorsID, avoidPredator);
 
+	// Other objects.
 	// Relics.
 	int relicID = createObjectDefVerify("relic");
 	addObjectDefItemVerify(relicID, "Relic", 1, 0.0);
@@ -198,7 +199,6 @@ void main() {
 	rmAddObjectDefConstraint(relicID, createClassDistConstraint(classStartingSettlement, 70.0));
 	rmAddObjectDefConstraint(relicID, avoidRelic);
 
-	// Other objects.
 	// Random trees.
 	int randomTree1ID = rmCreateObjectDef("random tree 1");
 	rmAddObjectDefItem(randomTree1ID, "Palm", 1, 0.0);
@@ -433,6 +433,7 @@ void main() {
 			rmBuildArea(oasisLakeID);
 		}
 	}
+
 	// Set up player areas.
 	float playerAreaSize = rmAreaTilesToFraction(2000);
 

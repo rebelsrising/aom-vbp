@@ -1,7 +1,7 @@
 /*
 ** RM X Framework
 ** RebelsRising
-** Last edit: 26/03/2021
+** Last edit: 28/04/2021
 **
 ** The purpose of the RM X framework is to serve as the ultimate random map scripting library for competitive Age of Mythology maps.
 **
@@ -482,11 +482,16 @@ bool hasMergedPlayer(int p = -1) {
 ** Gets the god name of a player as a string.
 **
 ** @param player: the player to get the name of the major god for
+** @param map: whether to apply getPlayer() to the given player or not
 **
 ** @returns: the name of the god as string
 */
-string getGodName(int player = 0) {
+string getGodName(int player = 0, bool map = true) {
 	int civ = rmGetPlayerCiv(getPlayer(player));
+
+	if(map == false) {
+		civ = rmGetPlayerCiv(player);
+	}
 
 	if(civ == cCivZeus) {
 		return("Zeus");
@@ -515,7 +520,7 @@ string getGodName(int player = 0) {
 	} else if(civ == cCivFuxiID) {
 		return("Fu Xi");
 	} else if(civ == cCivNuwaID) {
-		return("Nü Wa");
+		return("Nu Wa");
 	} else if(civ == cCivShennongID) {
 		return("Shennong");
 	}
@@ -813,15 +818,17 @@ void injectInitNote(bool addObsAllowed = true, bool mergeModeAllowed = true) {
 		int playerCount = 1;
 
 		for(i = 0; < cTeams) {
-			for(j = 1; <= getNumberPlayersOnTeam(i)) {
-				// Create 1 line per player.
-				if(hasMergedPlayer(getPlayer(playerCount))) {
-					code("trChatSendSpoofed(" + getPlayer(playerCount) + ", \"" + getPlayerColor(getPlayer(playerCount)) + rmGetPlayerName(getPlayer(playerCount)) + " (" + getGodName(playerCount) + "/merged)" + cColorOff + "\");");
-				} else {
-					code("trChatSendSpoofed(" + getPlayer(playerCount) + ", \"" + getPlayerColor(getPlayer(playerCount)) + rmGetPlayerName(getPlayer(playerCount)) + " (" + getGodName(playerCount) + ")" + cColorOff + "\");");
-				}
+			for(j = 1; < cNumberPlayers) {
+				if(rmGetPlayerTeam(j) == i && isMergedPlayer(j) == false) {
+					// Create 1 line per player.
+					if(hasMergedPlayer(j)) {
+						code("trChatSendSpoofed(" + j + ", \"" + getPlayerColor(j) + rmGetPlayerName(j) + " (" + getGodName(j, false) + "/merged)" + cColorOff + "\");");
+					} else {
+						code("trChatSendSpoofed(" + j + ", \"" + getPlayerColor(j) + rmGetPlayerName(j) + " (" + getGodName(j, false) + ")" + cColorOff + "\");");
+					}
 
-				playerCount++;
+					playerCount++;
+				}
 			}
 
 			// Don't print vs after last team.
@@ -1653,7 +1660,7 @@ float getAngleBetweenConsecutiveAngles(float a1 = 0.0, float a2 = 0.0) {
 /*
 ** Conversions, scaling, randomization, constraints, player placement, and core areas.
 ** RebelsRising
-** Last edit: 07/03/2021
+** Last edit: 16/04/2021
 */
 
 // include "rmx_core.xs";
@@ -2036,6 +2043,18 @@ bool randChance(float trueChance = 0.5) {
 }
 
 /*
+** Calculates a random float with a higher chance for a smaller value.
+**
+** @param x: minimum value
+** @param y: maximum value
+**
+** @returns: the randomized float
+*/
+float randSmallFloat(float x = 0.0, float y = 1.0) {
+	return(sq(rmRandFloat(sqrt(x), sqrt(y))));
+}
+
+/*
 ** Calculates a random float with a higher chance for a larger value.
 **
 ** @param x: minimum value
@@ -2044,7 +2063,31 @@ bool randChance(float trueChance = 0.5) {
 ** @returns: the randomized float
 */
 float randLargeFloat(float x = 0.0, float y = 1.0) {
-	return(sqrt(rmRandFloat(x * x, y * y)));
+	return(sqrt(rmRandFloat(sq(x), sq(y))));
+}
+
+/*
+** Calculates a random int with a higher chance for a smaller value.
+**
+** @param x: minimum value
+** @param y: maximum value
+**
+** @returns: the randomized int
+*/
+int randSmallInt(int x = 0, int y = 0) {
+	return(0 + sq(rmRandFloat(sqrt(x), sqrt(y + 1))));
+}
+
+/*
+** Calculates a random int with a higher chance for a larger value.
+**
+** @param x: minimum value
+** @param y: maximum value
+**
+** @returns: the randomized int
+*/
+int randLargeInt(int x = 0, int y = 0) {
+	return(0 + sqrt(rmRandFloat(sq(x), sq(y + 1))));
 }
 
 /*
@@ -3880,9 +3923,9 @@ void placeLocationsInLine(int n = 1, float x1 = 0.0, float z1 = 0.0, float x2 = 
 /*
 ** Spawn checking for non-mirrored object IDs and proto names.
 ** RebelsRising
-** Last edit: 09/03/2021
+** Last edit: 14/04/2021
 **
-** You have two options of verifying placement.
+** You have two options to verify placement:
 **
 ** 1. By adding a check via trigger for a specific proto name.
 **    To do so, you have call addProtoPlacementCheck() (see the proto check section below).
@@ -15667,7 +15710,7 @@ void injectRainFix() {
 /*
 ** RM X Framework.
 ** RebelsRising
-** Last edit: 10/03/2021
+** Last edit: 14/04/2021
 **
 ** Lowest library file in the hierarchy - include this in your random map script.
 ** Check core.xs for more details about the RM X framework.
